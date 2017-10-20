@@ -31,21 +31,23 @@ from google.assistant.library.file_helpers import existing_file
 
 
 import actions
+from subprocess import call
 
 def process_event(event):
     print(event)
     print("\n")
     if event.type == EventType.ON_CONVERSATION_TURN_STARTED:
-       actions.publish('device/ghost/animate', 'ON1')
+        actions.ding()
+        actions.publish('device/ghost/animate', 'ON1')
         
     if (event.type == EventType.ON_RESPONDING_STARTED and event.args and not event.args['is_error_response']):
-       actions.publish('device/ghost/animate', 'ON2')
+        actions.publish('device/ghost/animate', 'ON2')
 
     if event.type == EventType.ON_RESPONDING_FINISHED:
-       actions.publish('device/ghost/animate', 'OFF')
+        actions.publish('device/ghost/animate', 'OFF')
 
     if (event.type == EventType.ON_CONVERSATION_TURN_FINISHED and event.args and not event.args['with_follow_on_turn']):
-       actions.publish('device/ghost/animate', 'OFF')
+        actions.publish('device/ghost/animate', 'OFF')
 
         
 def main():
@@ -70,8 +72,9 @@ def main():
             process_event(event)
             
             if event.type == EventType.ON_RECOGNIZING_SPEECH_FINISHED:
-                if actions.process(event.args["text"].lower()):
+                if actions.process(event.args["text"].lower(), assistant):
                     assistant.stop_conversation()
+                    pass
 
 if __name__ == '__main__':
     main()
