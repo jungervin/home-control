@@ -6,6 +6,7 @@ import config
 with open('actions.json') as data_file:    
     actions = json.load(data_file)
 
+
 def publish(topic, msg, qos=0, retain=False):
     try:
         print("======== PUBLISH ==========")
