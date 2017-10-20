@@ -29,7 +29,6 @@ import subprocess
 
 import actions
 
-
 def process_event(event):
     print(event)
     print("\n")
