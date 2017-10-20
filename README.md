@@ -2,11 +2,6 @@
 # home-control
 
 
-# sources
-
-- https://github.com/shivasiddharth/GassistPi
-- https://github.com/merlinschumacher/ct-google-assistant-sdk
-
 # packages
 
 - https://pypi.python.org/pypi/gTTS

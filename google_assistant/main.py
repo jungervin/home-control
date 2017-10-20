@@ -16,6 +16,7 @@
 
 #
 # https://github.com/shivasiddharth/GassistPi
+# https://github.com/merlinschumacher/ct-google-assistant-sdk
 #
 
 from __future__ import print_function
