@@ -1,7 +1,7 @@
 [
     {
         "device": "desktoplight",
-        "mqtt": {"topic": "device/desktoplight", "qos": 0, "retain": false},
+        "mqtt": {"topic": "cmnd/sonoff4/POWER", "qos": 0, "retain": false},
         "commands": [
             {"command": "please turn on the desktop light", "answer": "Okay! The desktop light turn on!", "value": "on" },
             {"command": "please turn off the desktop light", "answer": "Okay! The desktop light turn off!", "value": "off" }
@@ -15,7 +15,5 @@
             {"command": "please turn on the tv", "answer": "Okay! The tv turn on!", "value": "on" },
             {"command": "please turn off the tv", "answer": "Okay! The tv turn off!", "value": "off" }
         ]
-    }
-
-    
+    }   
 ]

@@ -5,7 +5,7 @@ import time
 import config
 
 from gtts import gTTS
-#from subprocess import call
+from subprocess import call
 import subprocess
 
 with open('actions.json') as data_file:    
@@ -16,7 +16,11 @@ with open('actions.json') as data_file:
 def speak_tts(text, lang="en-us"):
     tts = gTTS(text=text, lang=lang, slow=False)
     tts.save("audio/answer.mp3")
-    subprocess.Popen(["mpg123", "audio/answer.mp3"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    # Wait for end
+    call(["mpg123", "audio/answer.mp3"])
+    
+    # Don't wait for end
+    #subprocess.Popen(["mpg123", "audio/answer.mp3"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
  
 def ding():
     subprocess.Popen(["mpg123", "audio/ding.mp3"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -50,8 +54,8 @@ def process(text, assistant):
                 print("VALUE:  %s" % command["value"])                
                 print("ANSWER: %s" % command["answer"])              
 
-                publish(action['mqtt']['topic'], command["value"], 0, False)
                 speak_tts(command["answer"])
+                publish(action['mqtt']['topic'], command["value"], 0, False)
 
                 return True
 
